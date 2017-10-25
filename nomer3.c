@@ -25,7 +25,14 @@ void* Lohan(void *arg)
 
 void* kepiting(void *arg)
 {
-    
+	status=0;
+  	status_k=100;
+		while(status_k>0)
+		{
+			sleep(20);
+			status_k-=10;
+		}
+		status=1;printf("Game Over\n");exit(EXIT_SUCCESS);
 }
  
 int main(void)
