@@ -39,10 +39,18 @@ int main(void)
 {
 
     pthread_create(&(tid1), NULL, &Lohan, NULL);
-    pthread_create(&(tid2), NULL, &Kepiting, NULL);
+    pthread_create(&(tid2), NULL, &kepiting, NULL);
  
-    pthread_join(tid1, NULL);
-    pthread_join(tid2, NULL);
- 
-    return 0;
+while(status!=1)
+	{	
+		int m;
+		printf("%d\n",status_l);
+		printf("%d\n",status_k);
+		printf("1.Beri makan Lohan\n2.Beri makan Kepiting\n");
+		scanf("%d",&m);
+		if(m==1) {status_l+=10;}
+		else if(m==2) {status_k+=10;}
+	}
+	return 0;
+
 }
