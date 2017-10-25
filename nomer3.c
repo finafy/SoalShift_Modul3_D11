@@ -17,7 +17,7 @@ void* Lohan(void *arg)
 	while(status_l>0)
 	{
 		sleep(10);
-		status_l-=10;
+		status_l=status_l-10;
 	}
 	status=1;printf("Game Over\n");exit(EXIT_SUCCESS);
 }
@@ -30,7 +30,7 @@ void* kepiting(void *arg)
 		while(status_k>0)
 		{
 			sleep(20);
-			status_k-=10;
+			status_k=status_k-10;
 		}
 		status=1;printf("Game Over\n");exit(EXIT_SUCCESS);
 }
