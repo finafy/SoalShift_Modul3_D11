@@ -28,14 +28,12 @@ void main()
 		}
 		else if(pilihan==2)
 		{
-			char weapon[8];int jumlah;
-			scanf("%s %d",&weapon,&jumlah);
-			if(strcmp(weapon,senjata[0])==0) shm[0]=shm[0]-jumlah;
-			else if(strcmp(weapon,senjata[1])==0) shm[1]=shm[1]-jumlah;
-			else if(strcmp(weapon,senjata[2])==0) shm[2]=shm[2]-jumlah;
-			else if(strcmp(weapon,senjata[3])==0) shm[3]=shm[3]-jumlah;
-			else if(strcmp(weapon,senjata[4])==0) shm[4]=shm[4]-jumlah;
-			else if(strcmp(weapon,senjata[5])==0) shm[5]=shm[5]-jumlah;
+			 char weapon[8];int jumlah;int i;
+                        scanf("%s %d",&weapon,&jumlah);
+
+                        for(i=0;i<6;i++)
+                        { if(strcmp(weapon,senjata[i])==0) shm[i]=shm[i]-jumlah;}
+
 		}
 
 	}
