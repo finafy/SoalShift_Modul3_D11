@@ -6,7 +6,7 @@
 
 pthread_t tid [50];
 
-void search (void* argv)
+void *search (void *argv)
 {
     FILE *text;
     char simpan [1000];
@@ -27,20 +27,18 @@ void search (void* argv)
     
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	int a;
-	int b;
+	int a=0;
+
+	for(a=1; a<argc; a++)
+		{
+			pthread_create(&tid[a], NULL, search, (void*)argv[a]);
+		}
 
 	for(a=0; a<argc; a++)
 		{
-			pthread_create(&tid[a], NULL, search, (void*)argv[a]);
-			//printf("Coba : %s\n ", argv[a]);
-		}
-
-	for(b=0; b<argc; b++)
-		{
-			pthread_join(tid[b], NULL);
+			pthread_join(tid[a], NULL);
 		}
 	return 0;
 }
