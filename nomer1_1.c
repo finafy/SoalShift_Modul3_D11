@@ -4,20 +4,39 @@
 #include <unistd.h>
 #include <string.h>
 
-#define  SHZISE 100
 
+#define  SHZISE 100
 void main()
 {
 	int *shm;
         key_t key = 1234;
 
         int shmid = shmget(key, SHZISE, IPC_CREAT | 0666);
-        shm = shmat(shmid, NULL, 0);
+        shm = (int*)shmat(shmid, NULL, 0);
+	char senjata[6][8]={"MP4A1","PM2-V1","SPR-3","SS2-V5","SPG1-V3","MINE"};
+	
+	while(1)
+	{
+		printf("1.Lihat Stock Senjata\n2.Tambah Stock Senjata\n");
+		int pilihan,i;
+		scanf("%d",&pilihan);
+		if(pilihan==1)
+		{
+			for(i=0;i<6;i++)
+			{ if(shm[i]>0)printf("%s-%d\n",senjata[i],shm[i]); }
 
+		}
+		else if(pilihan==2)
+		{
+			 char weapon[8];int jumlah;int i;
+                        scanf("%s %d",&weapon,&jumlah);
 
+                        for(i=0;i<6;i++)
+                        { if(strcmp(weapon,senjata[i])==0) shm[i]=shm[i]+jumlah;}
 
+		}
 
-        printf("Program 1: %d\n", *value);
-        shmdt(value);
+	}
+        shmdt(shm);
         shmctl(shmid, IPC_RMID, NULL);
 }
