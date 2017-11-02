@@ -15,7 +15,7 @@ void* Lohan(void *arg)
 	status=0;
 	while(status_louhan>0)
 	{
-		sleep(10);
+		sleep(3);
 		status_louhan = status_louhan-15;
 	}
 	status=1;printf("Game Over\n");exit(EXIT_SUCCESS);

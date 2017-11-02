@@ -13,8 +13,8 @@ void main()
 
         int shmid = shmget(key, SHZISE, IPC_CREAT | 0666);
         shm = (int*)shmat(shmid, NULL, 0);
+
 	char senjata[6][8]={"MP4A1","PM2-V1","SPR-3","SS2-V5","SPG1-V3","MINE"};
-	
 	while(1)
 	{
 		printf("1.Lihat Stock Senjata\n2.Tambah Stock Senjata\n");
@@ -23,13 +23,13 @@ void main()
 		if(pilihan==1)
 		{
 			for(i=0;i<6;i++)
-			{ if(shm[i]>0)printf("%s-%d\n",senjata[i],shm[i]); }
+			{ if(shm[i]>0)printf("%s %d\n",senjata[i],shm[i]); }
 
 		}
 		else if(pilihan==2)
 		{
 			 char weapon[8];int jumlah;int i;
-                        scanf("%s %d",&weapon,&jumlah);
+                        scanf("%s %d",weapon,&jumlah);
 
                         for(i=0;i<6;i++)
                         { if(strcmp(weapon,senjata[i])==0) shm[i]=shm[i]+jumlah;}

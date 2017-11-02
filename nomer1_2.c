@@ -32,7 +32,7 @@ void main()
                         scanf("%s %d",&weapon,&jumlah);
 
                         for(i=0;i<6;i++)
-                        { if(strcmp(weapon,senjata[i])==0) shm[i]=shm[i]-jumlah;}
+                        { if(strcmp(weapon,senjata[i])==0) if(shm[i]>jumlah) shm[i]=shm[i]-jumlah;}
 
 		}
 
