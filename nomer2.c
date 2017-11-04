@@ -29,7 +29,7 @@ void* sys(void *arg)
 int main(void)
 {
 	int i = 0;
-	int err;
+	int err, status;
 	char argument[100];
 	char nama[100];
 	int tanya;
@@ -45,28 +45,76 @@ int main(void)
 		if(flag%2!=0){
 			printf("%s | mau berapa lubang yang diisi ? ",no1);
 			scanf("%d",&tanya);
-			for(int i=0;i<tanya;i++){
-			    printf("lubang ");
-			    scanf("%d",&no); if(lubang1[no-1]==0){ lubang1[no-1]=1; total1--;}
-			    if(total1<1 && total2<1){ printf("game seri, selamat\n"); return 0;};
+			while (tanya>4){
+				printf ("input harus berada pada 1-4, input baru :");
+				scanf("%d", &tanya);
+			}
+			printf("masukkan %d lubang: ", tanya);
+			for(i=0;i<tanya;i++){
+			    scanf("%d",&no);
+			    if (no>0 && no<16){
+				status=1;}
+			    else status = 0;
+
+			    if (status==0) {
+				printf ("input salah, tolong masukkan inputan lagi dan berada pada 1-16 : \n");
+				i--;
+			    }
+			    if (status==1){
+					if(lubang1[no-1]==0){ lubang1[no-1]=1; total1--;}
+			    		if(total1<1 && total2<1){ printf("game seri, selamat\n"); return 0;};
+			    }			
 			}
 			printf("\ngiliran %s menebak 4 lubang \n",no2);
-			for(int i=0;i<4;i++){
+			for(i=0;i<4;i++){
 			    scanf("%d",&no);
+			    if (no>0 && no<16){
+				status=1;}
+			    else status = 0;
+
+			    if (status==0) {
+				printf ("input salah, tolong masukkan inputan lagi dan berada pada 1-16 : \n");
+				i--;
+			    }
+			    if (status==1)
 			    err = pthread_create(&(tid[0]), NULL, &sys, NULL);
 			}		
 		}
 		else{
 			printf("%s | mau berapa lubang yang diisi ? ",no2);
 			scanf("%d",&tanya);
-			for(int i=0;i<tanya;i++){
-			    printf("lubang ");
-			    scanf("%d",&no); if(lubang2[no-1]==0){ lubang2[no-1]=1; total2--;}
-			    if(total1<1 && total2<1){ printf("game seri, selamat\n"); return 0;};
+			while (tanya>4){
+				printf ("input harus berada pada 1-4, input baru :");
+				scanf("%d", &tanya);
+			}
+			printf("masukkan %d lubang: ", tanya);
+			for(i=0;i<tanya;i++){
+			    scanf("%d",&no);
+			    if (no>0 && no<16){
+				status=1;}
+			    else status = 0;
+
+			    if (status==0) {
+				printf ("input salah, tolong masukkan inputan lagi dan berada pada 1-16 : \n");
+				i--;
+			    }
+			    if (status == 1) {
+				    if(lubang2[no-1]==0){ lubang2[no-1]=1; total2--;}
+				    if(total1<1 && total2<1){ printf("game seri, selamat\n"); return 0;};
+			    }
 			}
 			printf("\ngiliran %s menebak 4 lubang \n",no1);
-			for(int i=0;i<4;i++){
+			for(i=0;i<4;i++){
 			    scanf("%d",&no);
+			    if (no>0 && no<16){
+				status=1;}
+			    else status = 0;
+
+			    if (status==0) {
+				printf ("input salah, tolong masukkan inputan lagi dan berada pada 1-16 : \n");
+				i--;
+			    }
+			    if (status==1)
 			    err = pthread_create(&(tid[1]), NULL, &sys, NULL);
 			}		
 		}
